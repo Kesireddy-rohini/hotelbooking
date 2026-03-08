@@ -1,7 +1,6 @@
-package com.hotel.booking.entity;
+package com.hotel.booking.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Entity;
+
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -14,18 +13,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Room {
+public class RoomResponseDTO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer roomId;
 
-   @NotNull(message = "Room number cannot be Null")
+    @NotNull(message = "Room number cannot be Null")
     private Integer roomNumber;
 
     @NotBlank(message = "Room type cannot be empty")
@@ -39,9 +38,9 @@ public class Room {
     @Min(value = 1,message = "At least one person required")
     private Integer maxPeople;
 
-    @JsonIgnore
+    @Positive(message = "Maintenance cost must be positive")
     private double maintenanceCost;
 
-    @JsonIgnore
+    @NotBlank(message = "CleaningStatus cannot be empty")
     private String cleaningStatus;
 }

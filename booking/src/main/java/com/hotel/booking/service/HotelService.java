@@ -21,9 +21,9 @@ public class HotelService {
         hotelRepo.save(room);
     return "room added successfully";
     }
+
  // get all rooms
     public List<Room> getAllRooms(){
-
         return hotelRepo.findAll();
     }
 
@@ -48,6 +48,8 @@ public class HotelService {
         existing.setPricePerNight(room.getPricePerNight());
         existing.setAvailable(room.isAvailable());
         existing.setMaxPeople(room.getMaxPeople());
+        existing.setMaintenanceCost(room.getMaintenanceCost());
+        existing.setCleaningStatus(room.getCleaningStatus());
         hotelRepo.save(existing);
         return "room updated successfully";
     }
